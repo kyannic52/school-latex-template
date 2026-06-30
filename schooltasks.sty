@@ -1,70 +1,65 @@
 % schooltasks.sty
-% Aufgaben mit Metadaten: Schwierigkeit, Typisierung, Punkte, Tags.
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{schooltasks}[2026/06/30 Task environments]
+\ProvidesPackage{schooltasks}[2026/06/30 Task environments for school templates]
 
-\RequirePackage{xkeyval}
-\RequirePackage{tcolorbox}
-\RequirePackage{xcolor}
-\RequirePackage{tikz}
-\RequirePackage{etoolbox}
-\tcbuselibrary{skins,breakable}
+\RequirePackage{pgfkeys}
+\RequirePackage{xparse}
+\RequirePackage{needspace}
+\RequirePackage{schooldesign}
 
 \newcounter{schooltask}
-\newcounter{schoolsubtask}[schooltask]
-\renewcommand{\theschoolsubtask}{\alph{schoolsubtask}}
+\newif\ifschoolshowtaskmeta
+\schoolshowtaskmetafalse
 
-\def\taskDifficulty{}
-\def\taskType{}
-\def\taskPoints{}
-\def\taskTag{}
-\def\taskTitle{}
+\newcommand\schooltaskdifficulty{}
+\newcommand\schooltasktype{}
+\newcommand\schooltaskpoints{}
+\newcommand\schooltasktag{}
+\newcommand\schooltasktitle{}
 
-\define@key{taskmeta}{difficulty}{\def\taskDifficulty{#1}}
-\define@key{taskmeta}{type}{\def\taskType{#1}}
-\define@key{taskmeta}{points}{\def\taskPoints{#1}}
-\define@key{taskmeta}{tag}{\def\taskTag{#1}}
-\define@key{taskmeta}{title}{\def\taskTitle{#1}}
-
-\newcommand{\difficultyDots}[1]{%
-\ifstrequal{#1}{1}{●○○}{}%
-\ifstrequal{#1}{2}{●●○}{}%
-\ifstrequal{#1}{3}{●●●}{}%
-\ifstrequal{#1}{easy}{●○○}{}%
-\ifstrequal{#1}{medium}{●●○}{}%
-\ifstrequal{#1}{hard}{●●●}{}%
-}
-
-\newcommand{\taskTypeBadge}[1]{%
-  \tikz[baseline=(x.base)]\node[rounded corners=3pt,fill=schoolSoft,draw=schoolLine,inner xsep=5pt,inner ysep=2pt](x){\sffamily\scriptsize\ttfamily #1};%
+\pgfkeys{
+  /school/task/.is family, /school/task,
+  title/.store in=\schooltasktitle,
+  difficulty/.store in=\schooltaskdifficulty,
+  type/.store in=\schooltasktype,
+  points/.store in=\schooltaskpoints,
+  tag/.store in=\schooltasktag,
+  title=,
+  difficulty=,
+  type=,
+  points=,
+  tag=
 }
 
 \newcommand{\taskMetaLine}{%
-  \ifx\taskDifficulty\empty\else\textcolor{schoolMuted}{Niveau }\textcolor{schoolPrimary}{\difficultyDots{\taskDifficulty}}\quad\fi
-  \ifx\taskType\empty\else\textcolor{schoolMuted}{Typ }\taskTypeBadge{\taskType}\quad\fi
-  \ifx\taskTag\empty\else\textcolor{schoolMuted}{#}\texttt{\taskTag}\quad\fi
-  \ifx\taskPoints\empty\else\hfill\tikz[baseline=(p.base)]\node[rounded corners=4pt,fill=schoolPrimary,text=white,inner xsep=6pt,inner ysep=2.2pt](p){\sffamily\bfseries\small \taskPoints{} P};\fi
+  \ifschoolshowtaskmeta
+    \par\vspace{.8mm}{\scriptsize\color{schoolMuted}%
+      \ifx\schooltaskdifficulty\empty\else Schwierigkeit: \schooltaskdifficulty\quad\fi
+      \ifx\schooltasktype\empty\else Typ: \schooltasktype\quad\fi
+      \ifx\schooltaskpoints\empty\else Punkte: \schooltaskpoints\quad\fi
+      \ifx\schooltasktag\empty\else Tag: \schooltasktag\fi
+    }%
+  \fi
 }
 
-\newenvironment{task}[1][]{%
-  \stepcounter{schooltask}%
-  \setcounter{schoolsubtask}{0}%
-  \setkeys{taskmeta}{difficulty={},type={},points={},tag={},title={},#1}%
-  \begin{tcolorbox}[enhanced,breakable,arc=4mm,boxrule=.7pt,colback=white,colframe=schoolLine,
-    borderline west={2.4pt}{0pt}{schoolPrimary},left=4mm,right=4mm,top=3mm,bottom=3mm]
-  {\sffamily\bfseries\color{schoolInk}Aufgabe \theschooltask\ifx\taskTitle\empty\else{} · \taskTitle\fi}\par
-  {\sffamily\small\taskMetaLine}\par\vspace{1mm}
+\NewDocumentEnvironment{task}{O{}}{%
+  \refstepcounter{schooltask}%
+  \pgfkeys{/school/task, title=, difficulty=, type=, points=, tag=, #1}%
+  \Needspace{3.5cm}%
+  \par\vspace{4mm}%
+  \noindent{\color{schoolPrimary}\rule{\linewidth}{0.7pt}}\par\vspace{2.5mm}%
+  \noindent\begin{minipage}[t]{8mm}\schoolNumberBadge{\arabic{schooltask}}\end{minipage}%
+  \hspace{2mm}%
+  \begin{minipage}[t]{\dimexpr\linewidth-10mm\relax}%
+    \vspace{-6.8mm}%
+    {\large\bfseries\color{schoolInk}\schooltasktitle}%
+    \taskMetaLine\par\smallskip
 }{%
-  \end{tcolorbox}
+  \end{minipage}\par\vspace{1mm}%
 }
 
-\newcommand{\subtask}[2][]{%
-  \stepcounter{schoolsubtask}%
-  \par\smallskip\noindent\textbf{\theschoolsubtask)}\quad #2%
-  \ifstrempty{#1}{}{\hfill\textcolor{schoolMuted}{#1 P}}%
-  \par
+\NewDocumentCommand{\subtask}{O{} m}{%
+  \par\smallskip\noindent\textbf{#1}\quad #2\par\smallskip
 }
 
-\newenvironment{solution}{%
-\begin{tcolorbox}[enhanced,breakable,arc=3mm,boxrule=.5pt,colback=schoolSoftBlue,colframe=schoolSecondary,title=Lösungsskizze,fonttitle=\bfseries]
-}{\end{tcolorbox}}
+\endinput

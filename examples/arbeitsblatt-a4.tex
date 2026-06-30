@@ -1,39 +1,46 @@
-\documentclass[theme=modern,subject=Mathematik,grade=8]{schoolworksheet}
+% !TeX program = lualatex
+\documentclass[theme=modern,subject=Mathematik,grade=8,number=07,showmeta=false]{schoolworksheet}
 
 \worksheetsetup{
-  title={Lineare Funktionen},
-  subtitle={Steigung, Achsenabschnitt und Graphen},
-  number={07},
+  title={Gleichungen und Terme},
+  subtitle={Klammern, Gleichungen und Sachaufgaben},
   class={8b},
   date={\today}
 }
 
 \begin{document}
 
-\begin{infobox}[Ziel der Stunde]
-Du erkennst lineare Funktionen der Form $y=mx+b$ und kannst ihre Graphen zeichnen.
-\end{infobox}
-
-\begin{definitionbox}[Merke]
-Bei $y=mx+b$ beschreibt $m$ die Steigung und $b$ den Schnittpunkt mit der $y$-Achse.
-\end{definitionbox}
-
-\begin{task}[difficulty=1,type=xox,points=4,tag=grundlagen,title=Warm-up]
-Bestimme jeweils Steigung $m$ und Achsenabschnitt $b$.
-\begin{enumerate}
-\item $y=2x+3$
-\item $y=-\frac12x+4$
-\item $y=7x-1$
-\end{enumerate}
+\begin{task}[title={Klammern auflösen},difficulty=1,type=xxo,points=4,tag=Terme]
+Vereinfache die Terme.\par\medskip
+\begin{tabularx}{\linewidth}{@{}X X@{}}
+a) $2(x+3)=$ \answerline[3.5cm] & b) $4(2x-1)=$ \answerline[3.5cm]\\[6mm]
+c) $3(x-5)+2(x+1)=$ \answerline[3.0cm] & d) $5(2x+4)-3(x-1)=$ \answerline[2.8cm]
+\end{tabularx}
 \end{task}
 
-\begin{task}[difficulty=2,type=xxo,points=6,tag=graph,title=Graph zeichnen]
-Zeichne den Graphen der Funktion $f(x)=\frac12x-2$ in ein Koordinatensystem.
-\answerlines[4]
+\begin{task}[title={Gleichungen lösen},difficulty=2,type=xoo,points=6,tag=Gleichungen]
+Löse die folgenden Gleichungen nach $x$ auf.\par\medskip
+\begin{tabularx}{\linewidth}{@{}X X@{}}
+a) $2x+5=17$\par $x=$ \answerline[3cm] & b) $3x-4=11$\par $x=$ \answerline[3cm]\\[6mm]
+c) $5x+3=2x+15$\par $x=$ \answerline[3cm] & d) $4(x-2)=2(x+3)$\par $x=$ \answerline[3cm]
+\end{tabularx}
 \end{task}
 
-\begin{task}[difficulty=3,type=oox,points=8,tag=modellieren,title=Knobelaufgabe]
-Eine Gerade geht durch die Punkte $A(2|1)$ und $B(6|9)$. Bestimme die Funktionsgleichung.
+\begin{task}[title={Sachaufgabe},difficulty=2,type=oxo,points=5,tag=Modellieren]
+Lea kauft 3 Hefte und 2 Stifte und bezahlt dafür 8,20~€. Ein Heft kostet 1,80~€. Wie viel kostet ein Stift?\par\medskip
+Rechnung:\par\smallskip
+\gridbox[30]{3}\par\medskip
+Antwort: \answerline[9cm]
 \end{task}
+
+\begin{task}[title={Knobeln},difficulty=3,type=ooo,points=2,tag=Transfer]
+Welche Zahl muss anstelle von $\star$ stehen?\par\medskip
+$\star\cdot(2x-3)=6x-9$\par\medskip
+$\star=$ \answerline[4cm]
+\end{task}
+
+\begin{tipbox}
+Denk daran: Klammern zuerst auflösen und dann gleichartige Terme zusammenfassen.
+\end{tipbox}
 
 \end{document}

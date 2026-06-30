@@ -1,9 +1,6 @@
-param([Parameter(Mandatory=$true)][string]$RepoUrl)
-$Target = Join-Path $HOME "texmf\tex\latex\school-latex-template"
-New-Item -ItemType Directory -Force -Path (Split-Path $Target) | Out-Null
-if (Test-Path (Join-Path $Target ".git")) {
-  Write-Host "Repo existiert bereits: $Target"
-} else {
-  git clone $RepoUrl $Target
-}
-Write-Host "Fertig. In LaTeX: \documentclass{schoolworksheet}"
+param([string]$RepoUrl = "https://github.com/kyannic52/school-latex-template.git")
+$target = Join-Path $HOME "texmf\tex\latex"
+New-Item -ItemType Directory -Force -Path $target | Out-Null
+Set-Location $target
+git clone $RepoUrl
+mktexlsr (Join-Path $HOME "texmf")
