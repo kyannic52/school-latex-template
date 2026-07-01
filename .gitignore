@@ -1,0 +1,5 @@
+*.log
+*.aux
+*.synctex.gz
+examples/arbeitsblatt-a4.log
+examples/arbeitsblatt-a4.aux
