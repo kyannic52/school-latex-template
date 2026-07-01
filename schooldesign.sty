@@ -11,17 +11,19 @@
 \RequirePackage{ifthen}
 
 \newlength\schoolIconSize
-\setlength\schoolIconSize{13mm}
+\setlength\schoolIconSize{20mm}
 
 % Großer Fach-Icon-Kasten im Kopf, bewusst ohne externe Bilddateien.
 \newcommand{\schoolSubjectIcon}{%
   \begin{tikzpicture}[baseline=(box.base)]
     \node[rounded corners=3mm, minimum width=\schoolIconSize, minimum height=\schoolIconSize,
       inner sep=0pt, shade, left color=schoolPrimaryDark, right color=schoolAccent] (box) {};
-    \draw[white, line width=.75pt, -stealth] (-.38,-.28) -- (-.38,.34);
-    \draw[white, line width=.75pt, -stealth] (-.42,-.28) -- (.38,-.28);
-    \draw[white, line width=.8pt] (-.32,-.18) -- (-.12,.06) -- (.05,-.05) -- (.32,.28);
-    \fill[white] (-.32,-.18) circle (0.7pt) (-.12,.06) circle (0.7pt) (.05,-.05) circle (0.7pt) (.32,.28) circle (0.7pt);
+    \begin{scope}[scale=1.38]
+      \draw[white, line width=.75pt, -stealth] (-.38,-.28) -- (-.38,.34);
+      \draw[white, line width=.75pt, -stealth] (-.42,-.28) -- (.38,-.28);
+      \draw[white, line width=.8pt] (-.32,-.18) -- (-.12,.06) -- (.05,-.05) -- (.32,.28);
+      \fill[white] (-.32,-.18) circle (0.7pt) (-.12,.06) circle (0.7pt) (.05,-.05) circle (0.7pt) (.32,.28) circle (0.7pt);
+    \end{scope}
   \end{tikzpicture}%
 }
 

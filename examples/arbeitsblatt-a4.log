@@ -1,7 +1,7 @@
-This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.5.4)  1 JUL 2026 08:35
+This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.5.4)  1 JUL 2026 09:07
  restricted system commands enabled.
-**arbeitsblatt-a4.tex
-(./arbeitsblatt-a4.tex
+**examples/arbeitsblatt-a4.tex
+(./examples/arbeitsblatt-a4.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-04-11>
 Lua module: luaotfload 2024-02-14 3.28 Lua based OpenType font support
@@ -39,8 +39,7 @@ Inserting `luaotfload.aux.fixup_fontdata' in `luaotfload.patch_font_unsafe'.
 Inserting `luaotfload.aux.set_capheight' in `luaotfload.patch_font'.
 Inserting `luaotfload.aux.set_xheight' in `luaotfload.patch_font'.
 Inserting `luaotfload.rewrite_fontname' in `luaotfload.patch_font'.
-Inserting `tracingstacklevels' in `input_level_string'. (c:/Users/kalka/texmf/t
-ex/latex/school-latex-template/schoolworksheet.cls
+Inserting `tracingstacklevels' in `input_level_string'. (./schoolworksheet.cls
 Document Class: schoolworksheet 2026/06/30 Modern worksheet class
 (c:/texlive/2024/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
@@ -627,8 +626,7 @@ File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
 (c:/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzli
 brarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
-)))
-(c:/Users/kalka/texmf/tex/latex/school-latex-template/schooldesign.sty
+))) (./schooldesign.sty
 Package: schooldesign 2026/06/30 Design helpers for school templates
 
 (c:/texlive/2024/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
@@ -726,8 +724,7 @@ LaTeX Font Info:    Trying to load font information for TU+fontawesomebrands on
 Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
 )
 \schoolIconSize=\skip61
-)
-(c:/Users/kalka/texmf/tex/latex/school-latex-template/schooltasks.sty
+) (./schooltasks.sty
 Package: schooltasks 2026/06/30 Task environments for school templates
 
 (c:/texlive/2024/texmf-dist/tex/latex/needspace/needspace.sty
@@ -735,10 +732,9 @@ Package: needspace 2010/09/12 v1.3d reserve vertical space
 )
 \c@schooltask=\count305
 )
-(c:/Users/kalka/texmf/tex/latex/school-latex-template/themes/modern.sty
+(./themes/modern.sty
 Package: themes/modern 2026/06/30 Modern school worksheet theme
-))
-(./arbeitsblatt-a4.aux)
+)) (./examples/arbeitsblatt-a4.aux)
 \openout1 = arbeitsblatt-a4.aux
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
@@ -752,7 +748,8 @@ LaTeX Font Info:    ... okay on input line 11.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 11.
 LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 1
 1.
- (c:/texlive/2024/texmf-dist/tex/latex/base/ts1cmr.fd
+
+(c:/texlive/2024/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 11.
@@ -876,45 +873,29 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 (c:/texlive/2024/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
-))
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 11.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 11.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 11.
-
-Overfull \hbox (22.2312pt too wide) in paragraph at lines 11--11
- [][]
- []
-
-[1
+)) [1
 
 {c:/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 
 enddocument/afterlastpage: lastpage setting LastPage.
-(./arbeitsblatt-a4.aux)
+(./examples/arbeitsblatt-a4.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-04-11>
  ***********
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 )
 
 Here is how much of LuaTeX's memory you used:
- 24521 strings out of 476381
+ 24523 strings out of 476381
  100000,1977958 words of node,token memory allocated
  473 words of node memory still in use:
    4 hlist, 1 vlist, 1 rule, 5 glue, 3 kern, 1 glyph, 9 attribute, 52 glue_spec,
  6 attribute_list, 2 write nodes
-   avail lists: 1:1,2:2783,3:1073,4:134,5:158,6:112,7:2750,8:15,9:714,10:3,11:12
+   avail lists: 1:1,2:2801,3:1083,4:134,5:158,6:112,7:2818,8:15,9:746,10:3,11:12
 0
- 46111 multiletter control sequences out of 65536+600000
- 52 fonts using 12592023 bytes
- 117i,11n,114p,425b,1088s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 46112 multiletter control sequences out of 65536+600000
+ 53 fonts using 13063551 bytes
+ 117i,16n,114p,434b,1088s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2024/texmf-dist/fonts/opentype/public/fontawesome5/FontAwesome5Free-
 Solid-900.otf><c:/texlive/2024/texmf-dist/fonts/opentype/public/fontawesome5/Fon
 tAwesome5Free-Regular-400.otf><c:/texlive/2024/texmf-dist/fonts/opentype/public/
@@ -922,7 +903,7 @@ inter/Inter-Regular.otf><c:/texlive/2024/texmf-dist/fonts/opentype/public/inter/
 Inter-Bold.otf><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10
 .pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/te
 xlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on arbeitsblatt-a4.pdf (1 page, 43249 bytes).
+Output written on arbeitsblatt-a4.pdf (1 page, 43259 bytes).
 
 PDF statistics: 53 PDF objects out of 1000 (max. 8388607)
  33 compressed objects within 1 object stream

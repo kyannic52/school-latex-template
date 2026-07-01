@@ -72,22 +72,20 @@
 \newcommand{\worksheetheader}{%
   \thispagestyle{fancy}%
   \noindent
-  \begin{minipage}[c]{15mm}\schoolSubjectIcon\end{minipage}\hspace{4mm}%
-  \begin{minipage}[c]{0.49\linewidth}
-    {\fontsize{29}{31}\selectfont\bfseries\color{schoolInk}\MakeUppercase{\school@subject}}\par\vspace{-1mm}
-    {\Large\bfseries\color{schoolPrimary}\worksheetTitle}\par
-    \ifx\worksheetSubtitle\empty\else{\large\color{schoolMuted}\worksheetSubtitle}\fi
-  \end{minipage}\hfill
-  \begin{minipage}[c]{0.31\linewidth}
-    \raggedleft
-    \ifx\school@number\empty\else\schoolSmallPill{Nr.\,\school@number}\par\vspace{1mm}\fi
+  \begin{tabularx}{\linewidth}{@{}p{21mm}@{\hspace{4mm}}>{\raggedright\arraybackslash}X>{\raggedleft\arraybackslash}p{60mm}@{}}
+    \vspace{0pt}\schoolSubjectIcon &
+    \vspace{0pt}{\fontsize{31}{32}\selectfont\bfseries\color{schoolInk}\MakeUppercase{\school@subject}}\par\vspace{.8mm}
+    {\fontsize{15}{18}\selectfont\bfseries\color{schoolPrimary}\worksheetTitle}\par
+    \ifx\worksheetSubtitle\empty\else\vspace{.4mm}{\fontsize{11}{13}\selectfont\color{schoolMuted}\worksheetSubtitle}\fi
+    &
+    \vspace{0pt}\ifx\school@number\empty\else\schoolSmallPill{Nr.\,\school@number}\par\vspace{1.5mm}\fi
     \begin{tabular}{@{}>{\color{schoolInk}}l@{\hspace{2mm}}l@{}}
-      \faUser[regular] & Name:\quad\rule{38mm}{0.35pt}\\[2mm]
-      \faCalendar*[regular] & Datum:\quad\rule{38mm}{0.35pt}\\[2mm]
-      \faUsers & Klasse:\quad\rule{38mm}{0.35pt}
+      \faUser[regular] & Name:\quad\rule{36mm}{0.35pt}\\[2.2mm]
+      \faCalendar*[regular] & Datum:\quad\rule{36mm}{0.35pt}\\[2.2mm]
+      \faUsers & Klasse:\quad\rule{36mm}{0.35pt}
     \end{tabular}
-  \end{minipage}
-  \par\vspace{5mm}\noindent{\color{schoolPrimary}\rule{\linewidth}{1pt}}\par\vspace{5mm}
+  \end{tabularx}
+  \par\vspace{6mm}\noindent{\color{schoolPrimary}\rule{\linewidth}{1pt}}\par\vspace{5mm}
 }
 
 \newenvironment{worksheetbody}{%
