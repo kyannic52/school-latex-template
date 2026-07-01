@@ -37,6 +37,14 @@
 \RequirePackage{schooldesign}
 \RequirePackage{themes/\school@theme}
 
+\newlength{\exampointscolwidth}
+\setlength{\exampointscolwidth}{22mm}
+\newlength{\exampointsgap}
+\setlength{\exampointsgap}{5mm}
+\newlength{\examcontentcolwidth}
+\newlength{\examsubtaskleftwidth}
+\newlength{\examsubtaskrowwidth}
+
 \pagestyle{fancy}
 \fancyhf{}
 \renewcommand{\headrulewidth}{0pt}
@@ -49,12 +57,12 @@
   \ifexam@contentpages
     \begin{tikzpicture}[remember picture,overlay]
       \fill[schoolSoft,opacity=.75]
-        ([xshift=-28mm,yshift=-38mm]current page.north east)
+        ([xshift=-37mm,yshift=-38mm]current page.north east)
         rectangle
         ([xshift=-15mm,yshift=14mm]current page.south east);
       \draw[schoolLine,line width=.4pt]
-        ([xshift=-28mm,yshift=-38mm]current page.north east) --
-        ([xshift=-28mm,yshift=14mm]current page.south east);
+        ([xshift=-37mm,yshift=-38mm]current page.north east) --
+        ([xshift=-37mm,yshift=14mm]current page.south east);
     \end{tikzpicture}%
   \fi
 }
@@ -96,9 +104,7 @@
 
 \newcommand{\examcoverpage}{%
   \thispagestyle{empty}%
-  \noindent\begin{tikzpicture}
-    \fill[schoolPrimary] (0,0) rectangle ({.94\linewidth},5.6mm);
-  \end{tikzpicture}\par
+  \noindent{\color{schoolPrimary}\rule{.94\linewidth}{11.2mm}}\par
   \vspace{17mm}%
   \noindent
   \begin{tabularx}{\linewidth}{@{}p{25mm}@{\hspace{7mm}}X@{}}
@@ -163,7 +169,7 @@
   \end{tabularx}
   \par\vspace{4mm}\noindent{\color{schoolPrimary}\rule{\linewidth}{1pt}}\par\vspace{1mm}
   \noindent
-  \begin{tabularx}{\linewidth}{@{}>{\bfseries\scriptsize\color{schoolInk}}X>{\centering\arraybackslash\bfseries\scriptsize\color{schoolInk}}p{13mm}@{}}
+  \begin{tabularx}{\linewidth}{@{}>{\bfseries\scriptsize\color{schoolInk}}X>{\centering\arraybackslash\bfseries\scriptsize\color{schoolInk}}p{\exampointscolwidth}@{}}
     Aufgabe & Punkte
   \end{tabularx}
   \par\vspace{1mm}\noindent{\color{schoolLine}\rule{\linewidth}{0.5pt}}\par\vspace{3mm}
@@ -175,8 +181,16 @@
 }
 
 \newcounter{examtask}
+\newcounter{examsubtask}[examtask]
 \newcommand\examtasktitle{}
 \newcommand\examtaskpoints{}
+\newcommand\examsubtaskpoints{}
+\newcommand{\exampointsfield}[1]{%
+  \ifx#1\empty\else\strut\rule{10mm}{0.35pt}\,/\,#1P\fi
+}
+\newcommand{\examtaskpointsfield}{%
+  \exampointsfield{\examtaskpoints}%
+}
 
 \pgfkeys{
   /school/examtask/.is family, /school/examtask,
@@ -184,6 +198,26 @@
   points/.store in=\examtaskpoints,
   title=,
   points=
+}
+
+\NewDocumentCommand{\examsubtask}{O{} +m}{%
+  \refstepcounter{examsubtask}%
+  \def\examsubtaskpoints{#1}%
+  \setlength{\examsubtaskleftwidth}{\linewidth}%
+  \setlength{\examsubtaskrowwidth}{\dimexpr\linewidth+\exampointscolwidth+\exampointsgap\relax}%
+  \par\medskip\noindent
+  \makebox[0pt][l]{%
+    \begin{minipage}[t]{\examsubtaskrowwidth}
+      \begin{minipage}[t]{\examsubtaskleftwidth}
+        \vspace{0pt}%
+        \textbf{\alph{examsubtask})}\quad #2%
+      \end{minipage}\hfill
+      \begin{minipage}[t]{\exampointscolwidth}
+        \vspace{0pt}\centering\scriptsize\bfseries\color{schoolInk}\exampointsfield{\examsubtaskpoints}%
+      \end{minipage}%
+    \end{minipage}%
+  }%
+  \par\smallskip
 }
 
 \newcommand{\examtaskseparator}{%
@@ -202,14 +236,15 @@
   \else
     \par\vspace{2mm}\examtaskseparator
   \fi
-  \noindent\begin{minipage}[t]{\dimexpr\linewidth-18mm\relax}
+  \setlength{\examcontentcolwidth}{\dimexpr\linewidth-\exampointscolwidth-\exampointsgap\relax}%
+  \noindent\begin{minipage}[t]{\examcontentcolwidth}
     \vspace{0pt}%
     \schoolNumberBadge{\arabic{examtask}}\hspace{2mm}%
     {\bfseries\color{schoolInk}\examtasktitle}\par\vspace{1.5mm}%
 }{%
   \end{minipage}\hfill
-  \begin{minipage}[t]{13mm}
-    \vspace{0pt}\centering\bfseries\color{schoolInk}\examtaskpoints
+  \begin{minipage}[t]{\exampointscolwidth}
+    \vspace{0pt}\centering\small\bfseries\color{schoolInk}\examtaskpointsfield\par\vspace{1.5mm}%
   \end{minipage}\par\vspace{2mm}%
 }
 

@@ -29,7 +29,8 @@ Modernes LaTeX-Template fuer schulische Arbeitsblaetter.
 }
 \begin{document}
 \begin{examtask}[title={Terme und Gleichungen},points=6]
-...
+\examsubtask[4]{$3(x+2)-2(x-5)$ \hfill \answerline[7cm]}
+\examsubtask[2]{$4(2x-1)+3(x+4)$ \hfill \answerline[7cm]}
 \end{examtask}
 \examnewpage
 \begin{examtask}[title={Textaufgabe},points=6]
