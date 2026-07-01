@@ -97,13 +97,13 @@
   \ifschool@sidebar
     \end{minipage}\hfill
     \begin{minipage}[t]{0.24\linewidth}
-      \begin{rememberbox}\small Regeln, Formeln oder Merksätze.\end{rememberbox}
+      \begin{rememberbox}\raggedright\small Regeln, Formeln oder Merksätze.\end{rememberbox}
       \vspace{5mm}
       \begin{notebox}\writinglines[5mm]{10}\end{notebox}
       \vspace{5mm}
       \begin{schoolSoftBox}[colback=schoolSoftGreen,colframe=schoolSoftGreen]{\faCheck\hspace{2mm}Selbstcheck}
       \small Wie sicher fühlst du dich?\par\vspace{2mm}
-      $\square$ sicher\quad $\square$ geht so\quad $\square$ unsicher
+      \faSquare[regular]\ sicher\quad \faSquare[regular]\ geht so\quad \faSquare[regular]\ unsicher
       \end{schoolSoftBox}
     \end{minipage}
   \fi
