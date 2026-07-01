@@ -89,21 +89,25 @@
 }
 
 \newcommand{\examCoverInfoLine}[3]{%
-  \noindent\begin{tabularx}{\linewidth}{@{}>{\color{schoolPrimaryDark}}m{7mm}@{\hspace{2mm}}>{\color{schoolInk}}m{32mm}X@{}}
+  \noindent\hspace*{7mm}\begin{tabularx}{\dimexpr\linewidth-7mm\relax}{@{}>{\color{schoolPrimaryDark}}m{8mm}@{\hspace{2mm}}>{\color{schoolInk}}m{33mm}X@{}}
     #1 & \small #2 & {\small\bfseries #3}
   \end{tabularx}\par\vspace{4mm}%
 }
 
 \newcommand{\examcoverpage}{%
   \thispagestyle{empty}%
-  \noindent{\color{schoolPrimary}\rule{0.92\linewidth}{1.4pt}}%
-  \hspace{-0.1mm}\tikz[baseline=-0.45ex]\fill[schoolPrimary] (0,0) -- (4mm,1.4pt) -- (0,1.4pt) -- cycle;\par
+  \noindent\begin{tikzpicture}
+    \fill[schoolPrimary] (0,0) rectangle ({.94\linewidth},5.6mm);
+  \end{tikzpicture}\par
   \vspace{17mm}%
   \noindent
   \begin{tabularx}{\linewidth}{@{}p{25mm}@{\hspace{7mm}}X@{}}
-    \begingroup\setlength\schoolIconSize{24mm}\schoolSubjectIcon\endgroup &
-    \vspace{2mm}{\fontsize{30}{32}\selectfont\bfseries\color{schoolInk}\MakeUppercase{\school@subject}}\par\vspace{1mm}
-    {\fontsize{17}{20}\selectfont\bfseries\color{schoolPrimary}\examFullTitle}\par\vspace{2mm}
+    \vspace{0pt}\begingroup\setlength\schoolIconSize{24mm}\schoolSubjectIcon\endgroup &
+    \vspace{0pt}\begin{minipage}[t][24mm][t]{\linewidth}
+      \vspace{2.5mm}{\fontsize{30}{32}\selectfont\bfseries\color{schoolInk}\MakeUppercase{\school@subject}}\par
+      \vfill
+      {\fontsize{17}{20}\selectfont\bfseries\color{schoolPrimary}\examFullTitle}\par\vspace{3.5mm}
+    \end{minipage}\par\vspace{2mm}
     {\Large\color{schoolInk}\examClass}
   \end{tabularx}
   \vspace{20mm}
