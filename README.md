@@ -49,6 +49,59 @@ Kompilieren mit LuaLaTeX:
 lualatex examples/worksheet-a4.tex
 ```
 
+## Kopfübungen auf einer A4-Seite
+
+Die Klasse `schoolmental` bietet einen kompakten Kopf, nummerierte Aufgaben mit
+Bearbeitungsfeldern und eine rechte Korrekturspalte mit je zwei Ankreuzfeldern
+(`richtig` / `falsch`). Ein vollständiges Beispiel mit zehn Aufgaben, davon zwei
+mit Koordinatensystem, steht in `examples/mental-a4.tex`.
+
+```latex
+\documentclass[subject=Mathematik,grade=8b,number=01]{schoolmental}
+\worksheetsetup{title={Kopfübungen},subtitle={Gemischte Wiederholung}}
+\begin{document}
+\quicktask{Berechne: $48+37-19$.}
+\quicktask[field=grid]{Vereinfache: $3x+2x-7$.}
+\quicktask[field=coordinates,height=34mm]{Zeichne $A(-3\mid 1)$ ein.}
+\end{document}
+```
+
+Eine normale Zeile ist mindestens 18 mm hoch und enthält ein 9 mm hohes leeres
+Bearbeitungsfeld. Damit passen bis zu zwölf kurze Aufgaben auf eine A4-Seite.
+Bei acht Aufgaben kann beispielsweise `height=27mm,workheight=17mm` mehr Platz
+zum Schreiben geben. `height` ist eine Mindesthöhe; längere Inhalte vergrößern
+die Zeile automatisch. Bei mehr Text oder größeren Grafiken den Seitenumfang
+prüfen. Für Geometrie sind acht bis zehn Aufgaben meist zweckmäßiger.
+
+Optionen je `\quicktask[...]{Aufgabentext}`:
+
+- `field=blank` (Standard): umrandetes, leeres Bearbeitungsfeld.
+- `field=grid`: Bearbeitungsfeld mit 4-mm-Karos.
+- `field=coordinates`: Koordinatensystem unter der Aufgabe, mit $x$ von -4 bis 4
+  und $y$ von -2 bis 2; eine Einheit entspricht 4 mm.
+- `field=none`: eigene Bearbeitungsfläche oder Grafik direkt im Aufgabentext.
+- `height=...` und `workheight=...`: Mindesthöhe der Zeile und Höhe des leeren
+  bzw. karierten Feldes.
+
+Eigene GeoGebra-Exporte (PDF oder PNG) und ergänzte TikZ-Koordinatensysteme:
+
+```latex
+\quicktask[field=none]{Ergänze die Zeichnung.\par\smallskip
+  \includegraphics[width=65mm,height=27mm,keepaspectratio]{assets/geometrie.pdf}}
+\quicktask[field=none]{Spiegle den Punkt an der $y$-Achse.\par
+  \mentalcoordinates{}{\fill (-2,1) circle (1.5pt);}}
+```
+
+`assets/geometrie.pdf` ist hierbei durch den eigenen GeoGebra-Export zu ersetzen.
+Die Klassenoptionen `sidebar` und `showmeta` werden in dieser kompakten Vorlage
+nicht verwendet. Name und Datum bleiben zum handschriftlichen Ausfüllen frei.
+
+Aus dem Projektverzeichnis kompilieren:
+
+```powershell
+lualatex examples/mental-a4.tex
+```
+
 ## Installation lokal als Git-Clone
 
 ```powershell
